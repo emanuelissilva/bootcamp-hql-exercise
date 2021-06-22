@@ -33,8 +33,8 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public UserDTO createNewUser(@RequestBody UserDTO userDTO){
-        return null;
+    public void createNewUser(@RequestBody UserDTO userDTO){
+        userService.createUser(userDTO);
     }
 
     @PostMapping("/save")

@@ -19,8 +19,10 @@ public interface UserRepository extends CrudRepository<UserDTO, Long>{
     @Query("from UserDTO user where user.id=:id")
     UserDTO findUserById(Long id);
 
-    //@Query("insert into UserDTO user(username, password) select user.username, user.password from UserDTO user")
-    //UserDTO createUser(UserDTO userDTO);
+    @Modifying
+    @Transactional
+    @Query(value = "insert into UserDTO user(username, password) values (:username, :password)", nativeQuery = true)
+    void createUser(UserDTO userDTO);
 
     @Transactional
     @Modifying

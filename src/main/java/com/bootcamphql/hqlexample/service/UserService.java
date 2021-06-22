@@ -27,6 +27,10 @@ public class UserService {
         return userRepository.findByUsernameContains(query);
     }
 
+    public void createUser(UserDTO userDTO){
+        userRepository.createUser(userDTO);
+    }
+
     public UserDTO saveUser(UserDTO userDTO){
         return userRepository.save(userDTO);
     }
